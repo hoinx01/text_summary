@@ -7,3 +7,12 @@ X:\DotNet\DotNetCore\TextSummary\Core\obj\Debug\netcoreapp1.1\Core.csprojResolve
 X:\DotNet\DotNetCore\TextSummary\Core\obj\Debug\netcoreapp1.1\Core.AssemblyInfo.cs
 X:\DotNet\DotNetCore\TextSummary\Core\obj\Debug\netcoreapp1.1\Core.dll
 X:\DotNet\DotNetCore\TextSummary\Core\obj\Debug\netcoreapp1.1\Core.pdb
+X:\text_summary\Core\bin\Debug\netcoreapp1.1\Core.deps.json
+X:\text_summary\Core\bin\Debug\netcoreapp1.1\Core.runtimeconfig.json
+X:\text_summary\Core\bin\Debug\netcoreapp1.1\Core.runtimeconfig.dev.json
+X:\text_summary\Core\bin\Debug\netcoreapp1.1\Core.dll
+X:\text_summary\Core\bin\Debug\netcoreapp1.1\Core.pdb
+X:\text_summary\Core\obj\Debug\netcoreapp1.1\Core.csprojResolveAssemblyReference.cache
+X:\text_summary\Core\obj\Debug\netcoreapp1.1\Core.AssemblyInfo.cs
+X:\text_summary\Core\obj\Debug\netcoreapp1.1\Core.dll
+X:\text_summary\Core\obj\Debug\netcoreapp1.1\Core.pdb

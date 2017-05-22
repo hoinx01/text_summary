@@ -73,7 +73,47 @@ namespace Core.Domains
             }
             while (maxScoreChanged > threshold);
         }
-        
+
+        public void CalculateScoreWithMethod(double threshold, string method)
+        {
+            foreach (var vertex in this.Vertexes)
+            {
+                vertex.Score = 0.15;
+            }
+
+            double maxScoreChanged = 0;
+            int iteratorCount = 0;
+            do
+            {
+                iteratorCount++;
+                double currentLoopMaxScoreChanged = 0;
+                foreach (var v2 in this.Vertexes)
+                {
+                    double sumScoreFromOtherToV2 = 0;
+                    List<Edge> inV2Edges = this.Edges.Where(w => w.SecondVertexId == v2.Id).ToList();
+                    foreach (var inV2Edge in inV2Edges)
+                    {
+                        int v1Id = inV2Edge.FirstVertexId;
+                        Vertex v1 = this.Vertexes.Where(w => w.Id == v1Id).Single();
+                        List<Edge> outV1Edges = this.Edges.Where(w => w.FirstVertexId == v1Id).ToList();
+                        double sumOutV1EdgeWeights = outV1Edges.Select(s => s.WeightByMethods[method]).Sum();
+                        double v1ToV2Weight = outV1Edges.Where(w => w.SecondVertexId == v2.Id).Single().WeightByMethods[method];
+                        double scoreV1ForV2 = (v1ToV2Weight / (sumOutV1EdgeWeights)) * v1.Score;
+                        sumScoreFromOtherToV2 += scoreV1ForV2;
+                    }
+                    double newScoreV2 = (1 - damping) + damping * sumScoreFromOtherToV2;
+                    double scoreChanged = Math.Abs(newScoreV2 - v2.Score);
+                    if (scoreChanged > currentLoopMaxScoreChanged)
+                    {
+                        currentLoopMaxScoreChanged = scoreChanged;
+                    }
+                    v2.Score = newScoreV2;                   
+                }
+                maxScoreChanged = currentLoopMaxScoreChanged;
+            }
+            while (maxScoreChanged > threshold);
+        }
+
     }
     public class Vertex
     {
@@ -101,6 +141,8 @@ namespace Core.Domains
         public int FirstVertexId { get; set; }
         public int SecondVertexId { get; set; }
         public double Weight { get; set; }
+        public Dictionary<string, double> WeightBySimpleMethods { get; set; }
+        public Dictionary<string, double> WeightByMethods { get; set; }
 
         public Edge()
         {

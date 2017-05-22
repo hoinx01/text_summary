@@ -102,6 +102,7 @@ namespace Core.Domains
             {
                 double termIdf = Math.Log(this.SentenceCount - TermDfs[term] + 0.5) - Math.Log(TermDfs[term] + 0.5);
                 totalTermIdf += termIdf;
+                this.TermIdfs.Add(term, termIdf);
             }
             this.LengthAverage = this.Length / this.SentenceCount;
             this.IdfAverage = totalTermIdf / this.SentenceCount;

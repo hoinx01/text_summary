@@ -83,6 +83,9 @@ namespace Core.DucXmlData
         public void Write(Object obj, string path)
         {
             XmlSerializer ser = new XmlSerializer(obj.GetType());
+            if (File.Exists(path))
+                File.Delete(path);
+
             FileStream outputStream = new FileStream(path, FileMode.CreateNew);
             ser.Serialize(outputStream, obj);
 
