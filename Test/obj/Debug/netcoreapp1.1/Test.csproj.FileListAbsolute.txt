@@ -1,9 +1,0 @@
-X:\text_summary\Test\bin\Debug\netcoreapp1.1\Test.deps.json
-X:\text_summary\Test\bin\Debug\netcoreapp1.1\Test.runtimeconfig.json
-X:\text_summary\Test\bin\Debug\netcoreapp1.1\Test.runtimeconfig.dev.json
-X:\text_summary\Test\bin\Debug\netcoreapp1.1\Test.dll
-X:\text_summary\Test\bin\Debug\netcoreapp1.1\Test.pdb
-X:\text_summary\Test\obj\Debug\netcoreapp1.1\Test.csprojResolveAssemblyReference.cache
-X:\text_summary\Test\obj\Debug\netcoreapp1.1\Test.AssemblyInfo.cs
-X:\text_summary\Test\obj\Debug\netcoreapp1.1\Test.dll
-X:\text_summary\Test\obj\Debug\netcoreapp1.1\Test.pdb
