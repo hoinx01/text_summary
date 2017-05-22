@@ -43,6 +43,10 @@ namespace Core.Services
                         edge.WeightBySimpleMethods.Add(method, weight);
                     }
 
+                    var realWeights = edge.WeightBySimpleMethods.Where(w => w.Value > 0);
+                    if (realWeights.Count() == 0)
+                        continue;
+
                     var complexMethods = GetAllSublist(SentenceSimilarityMethod.METHODS);
                     foreach(var complexMethod in complexMethods)
                     {
