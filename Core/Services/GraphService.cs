@@ -228,7 +228,9 @@ namespace Core.Services
             {
                 for (int j = 1; j <= input.Count - i; j++)
                 {
-                    result.Add(input.GetRange(i, j));
+                    var subList = input.GetRange(i, j);
+                    if(subList.Count <=3 )
+                        result.Add(input.GetRange(i, j));
                 }
             }
 

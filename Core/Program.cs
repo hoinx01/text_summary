@@ -54,7 +54,7 @@ namespace Core
                     {
                         var key = string.Join(",", complexMethod);
                         Console.WriteLine("Calculating score, method: " + key);
-                        graph.CalculateScoreWithMethod(0.01, key);
+                        graph.CalculateScoreWithMethod(0.05, key);
                         Console.WriteLine("Calculated");
                         var automaticSummaryText = graphService.SortVertexToGetBySummaryRate(graph, document, 20);
 
