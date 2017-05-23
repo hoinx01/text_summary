@@ -13,6 +13,8 @@ namespace Core
     {
         static void Main(string[] args)
         {
+            const double THRESHOLD = 0.05;
+            const int SUMMARY_PERCENT = 10;
             var xmlService = new XmlService();
             var graphService = new GraphService();
 
@@ -54,9 +56,9 @@ namespace Core
                     {
                         var key = string.Join(",", complexMethod);
                         Console.WriteLine("Calculating score, method: " + key);
-                        graph.CalculateScoreWithMethod(0.05, key);
+                        graph.CalculateScoreWithMethod(THRESHOLD, key);
                         Console.WriteLine("Calculated");
-                        var automaticSummaryText = graphService.SortVertexToGetBySummaryRate(graph, document, 20);
+                        var automaticSummaryText = graphService.SortVertexToGetBySummaryRate(graph, document, SUMMARY_PERCENT);
 
                         var automaticSummaryDocument = new AutomaticSummaryDocument();
                         automaticSummaryDocument.SentenceSimilarlyMethod = key;
@@ -96,7 +98,9 @@ namespace Core
                 string key = string.Join(",", complexMethod);
                 for(int n=1; n<3; n++)
                 {
-                    var precisions = sumarizationPrecisions.Where(s => s.Method.Equals(key) && s.N == n).Select(s=>s.Precision).ToList();
+                    var precisions = sumarizationPrecisions
+                        .Where(s => s.Method.Equals(key) && s.N == n && !s.Precision.Equals(double.NaN))
+                        .Select(s=> s.Precision).ToList();
                     double max = precisions.Max();
                     double average = precisions.Average();
                     var summarizationStatistic = new SummarizationStatistic(key, n, max, average);

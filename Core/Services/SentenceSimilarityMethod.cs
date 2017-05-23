@@ -12,6 +12,6 @@ namespace Core.Services
         public const string LINTFIDF = "lintfidf";
         public const string KEYWORD = "keyword";
         public const string COSIN = "cosin";
-        public static List<string> METHODS = new List<string>() { BM25, FILTERD, TRCMP, LINTFIDF, KEYWORD, COSIN};
+        public static List<string> METHODS = new List<string>() { BM25, FILTERD, TRCMP, LINTFIDF, COSIN};
     }
 }

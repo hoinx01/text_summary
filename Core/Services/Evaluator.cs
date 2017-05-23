@@ -28,6 +28,9 @@ namespace Core.Services
             List<string> ngrams = GetTokens(doc, n);
             int sumCommonNgrams = 0;
             int sumTargetNgrams = 0;
+
+            if (targets == null || targets.Count == 0)
+                return double.NaN;
             foreach(var target in targets)
             {
                 List<string> targetNgrams = GetTokens(target, n);
@@ -35,7 +38,7 @@ namespace Core.Services
                 List<string> commonNgrams = ngrams.Intersect(targetNgrams).ToList();
                 sumCommonNgrams += commonNgrams.Count;
             }
-            return ((double)sumCommonNgrams) / ((double)sumTargetNgrams);
+            return (double) sumCommonNgrams / sumTargetNgrams;
         }
     }
 }
